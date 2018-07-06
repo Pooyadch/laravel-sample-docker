@@ -9,7 +9,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./web:/var/www
-
+    restart: always
     environment:
       - "DB_PORT=3306"
       - "DB_HOST=database"
@@ -40,6 +40,7 @@ services:
       - "MYSQL_PASSWORD=secret"
       - "MYSQL_ROOT_PASSWORD=secret"
       - "MYSQL_ROOT_USER=root"
+    restart: always
     ports:
         - "33061:3306"
 
@@ -49,6 +50,7 @@ services:
         container_name: phpmyadmin
         ports:
             - "8081:80"
+    restart: always
         depends_on:
             - database
         environment:
